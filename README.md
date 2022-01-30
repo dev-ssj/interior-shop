@@ -74,26 +74,33 @@
 * 쇼핑몰 메인
 ![1_메인](https://user-images.githubusercontent.com/79852136/151715914-397d1813-0bcb-4fc9-8a16-2f30630e8da4.png)
 
+
 * 로그인
 ![2_로그인](https://user-images.githubusercontent.com/79852136/151715915-e6d4415f-a449-405e-984c-5b1fc98b6411.png)
+
 
 * 회원가입
 ![3_회원가입](https://user-images.githubusercontent.com/79852136/151715916-1888ef6b-0198-4672-9374-f547d1184601.png)
 
+
 * 회원 마이페이지
 ![4_회마페](https://user-images.githubusercontent.com/79852136/151715917-5b89bf12-e2d3-4d13-9f34-bb195c29c376.png)
+
 
 * 상품 내역
 ![5_상품리스트](https://user-images.githubusercontent.com/79852136/151715919-d51bd5e1-2225-4100-9fa8-bd9e976efa44.png)
 ![5_상품리스트2](https://user-images.githubusercontent.com/79852136/151715920-8af0fca3-8869-4255-890e-5aae5e4ef130.png)
+
 
 * 상품 상세
 ![6_상품상세페이지1](https://user-images.githubusercontent.com/79852136/151715921-46be4454-181c-441e-a668-de05bd940eb7.png)
 ![6_상품상세페이지2](https://user-images.githubusercontent.com/79852136/151716024-a6697f03-8a00-4736-8781-60633dc12d41.png)
 ![6_상품상세페이지3](https://user-images.githubusercontent.com/79852136/151716025-e79501f2-a974-4133-93e6-3ebe8b67537a.png)
 
+
 * 장바구니 
 ![7_장바구니](https://user-images.githubusercontent.com/79852136/151716026-893c6219-9f3e-451a-ad79-cb9b23af00cb.png)
+
 
 * 주문 
 ![8_주문](https://user-images.githubusercontent.com/79852136/151716027-cb10927e-1b74-470e-ac53-28ee8ddf81a5.png)
