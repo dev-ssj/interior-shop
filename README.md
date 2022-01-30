@@ -71,3 +71,5 @@
 ![shop_20220111_153509](https://user-images.githubusercontent.com/79852136/148893830-9253170e-4535-4a4f-9b07-164dfbc83fc0.png)
 
 ## 구현화면
+* 쇼핑몰 메인
+https://user-images.githubusercontent.com/79852136/151715914-397d1813-0bcb-4fc9-8a16-2f30630e8da4.png
