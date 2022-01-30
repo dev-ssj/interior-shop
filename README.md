@@ -5,6 +5,8 @@
 ## 프로젝트 개요
 사용자는 인테리어 쇼핑몰 &lt;내일의 집>에서 판매중인 상품들을 확인하고 구매할 수 있으며, <br> 
 관리자는 관리자 페이지에서 상품관리, 회원관리 등 쇼핑몰 운영에 필요한 요소들을 관리 할 수 있다.
+* [Back End](https://github.com/dev-ssj/interior-shop/tree/main/springProject/src/main/java/kr/spring/)
+* [Front End](https://github.com/dev-ssj/interior-shop/tree/main/springProject/src/main/webapp/WEB-INF/views/)
 
 ## 구현 기능
 * 회원가입
