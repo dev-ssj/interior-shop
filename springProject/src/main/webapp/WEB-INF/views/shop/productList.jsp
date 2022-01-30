@@ -1,0 +1,142 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productList.css"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/template/fotter_template.css"> 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('[id=showmenu]').click(function() {
+        $('[class=menu]').not($(this).next('[class=menu]').slideToggle("slow")).slideUp();
+    });
+});
+
+
+</script>
+<div class="top_menu_info">
+	<div>
+	${category_top_name.c_top_name} > ${category_sub_name.c_sub_name}
+	</div>
+</div>
+<div id="main-width">
+	<div id="categorySide">
+		<c:forEach var="top" items="${category_top}">
+			<div id="showmenu">${top.c_top_name}</div>
+			<div class="menu">
+				<ul>
+					<c:forEach var="sub" items="${category_sub}">
+						<c:if test="${sub.c_top_no == top.c_top_no}">
+							<li><a href="${pageContext.request.contextPath}/shop/productList.do?c_top_no=${sub.c_top_no}&c_sub_no=${sub.c_sub_no}">${sub.c_sub_name}</a></li>
+						</c:if>
+					</c:forEach>
+		  		</ul>
+		</div>
+		</c:forEach>
+	</div>
+	<div class="top-small-menu">
+		<div class="top-small-menu-title">
+			${category_sub_name.c_sub_name}
+		</div>
+		<div class="menu-div">
+			<div class="menu-amount mb-3">
+				${count}개의 상품
+			</div>
+			<div class="element-right">
+			<input type="hidden" id="c_sub_no" name="c_sub_no" value="${c_sub_no}">
+			<input type="hidden" id="c_top_no" name="c_top_no" value="${c_top_no}">
+				<select name="orderby" id="orderby" class="form-control form-control-sm order-select" onchange="location.href=this.value">
+					<option value="productList.do?c_top_no=${c_top_no}&c_sub_no=${c_sub_no}&orderby=default" <c:if test="${empty orderby || orderby == 'default'}">selected='selected'</c:if>>기본순</option>
+					<option value="productList.do?c_top_no=${c_top_no}&c_sub_no=${c_sub_no}&orderby=best" <c:if test="${orderby == 'best'}">selected='selected'</c:if>>판매순</option>
+					<option value="productList.do?c_top_no=${c_top_no}&c_sub_no=${c_sub_no}&orderby=high" <c:if test="${orderby == 'high'}">selected='selected'</c:if>>가격높은순</option>
+					<option value="productList.do?c_top_no=${c_top_no}&c_sub_no=${c_sub_no}&orderby=row" <c:if test="${orderby == 'row'}">selected='selected'</c:if>>가격낮은순</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="list-container mt-3">
+			<c:forEach var="product" items="${list}">
+				<div class="list-content" onclick="location.href='productDetail.do?p_no=${product.p_no}'">
+					<div class="image-ani">
+					<img src="${pageContext.request.contextPath}/product/photoView.do?p_no=${product.p_no}" width="240" height="240">
+				</div>
+				
+					<div class="list-name mt-2 pl-2">
+						${product.p_name}
+					</div>
+					<c:if test="${product.p_amount==0 }">
+						<c:if test="${product.p_discount != 0}">
+							<div class="list-sale mr-1 pl-2" style="opacity: 0.2">
+								${product.p_discount}%
+							</div>
+						</c:if>
+					</c:if>
+					<c:if test="${product.p_amount!=0 }">
+						<c:if test="${product.p_discount != 0}">
+							<div class="list-sale mr-1 pl-2">
+								${product.p_discount}%
+							</div>
+						</c:if>
+					</c:if>
+				<c:if test="${product.p_amount!=0 }">
+				<div class="list-price pl-2">
+					<c:if test="${product.p_discount != 0}">
+						<fmt:formatNumber value="${product.p_price-(product.p_price*product.p_discount/100)}" pattern="#,###"/>원				
+					</c:if>
+					<c:if test="${product.p_discount == 0}">
+						<fmt:formatNumber value="${product.p_price }" pattern="#,###"/>원
+					</c:if>
+					</div>
+				</c:if>
+				<c:if test="${product.p_amount==0 }">
+				<div class="list-price pl-2" style="opacity: 0.2">
+					<c:if test="${product.p_discount != 0}">
+						<fmt:formatNumber value="${product.p_price-(product.p_price*product.p_discount/100)}" pattern="#,###"/>원				
+					</c:if>
+					<c:if test="${product.p_discount == 0}">
+						<fmt:formatNumber value="${product.p_price }" pattern="#,###"/>원
+					</c:if>
+					</div>
+				</c:if>
+				<c:if test="${product.p_review_count !=0}">
+					<div class="list-rating pl-2">
+						<div class="list-star">
+							<i class="fas fa-star" style="font-size: 13px; color:#35c5f0;"></i>
+							<span class="list-rating-num">
+								${product.p_review_rating}	
+							</span>
+							<span class="list-review">
+								리뷰 ${product.p_review_count}
+							</span>	
+						</div>
+					</div>	
+				</c:if>
+				<c:if test="${product.p_amount != 0}">	
+					<c:if test="${product.p_discount != 0}">
+						<div class="special-price-div ml-2">
+							<div class="special-price-text">
+								특가
+							</div>
+						</div>	
+					</c:if>
+				</c:if>
+				<c:if test="${product.p_amount == 0}">	
+					<div class="soldout-div ml-2">
+						<div class="special-price-text">
+							품절
+						</div>
+					</div>	
+				</c:if>
+				</div>
+			</c:forEach>
+			<c:if test="${count%4==3}">
+				<div class="list-container-empty" style="width: 240px; height: 360px; cursor:auto;"> </div>
+			</c:if>			
+			<c:if test="${count%4==2}">
+				<div class="list-container-empty" style="width: 240px; height: 360px; cursor:auto;"> </div>
+				<div class="list-container-empty" style="width: 240px; height: 360px; cursor:auto;"> </div>
+			</c:if>
+		</div>
+		
+	</div>	
+</div>

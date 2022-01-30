@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.member.dao.MemberMapper">  
+  	<update id="updateMember" parameterType="memberVO">
+		UPDATE member_detail
+		SET 
+		  mem_name = #{mem_name},
+		  mem_phone = #{mem_phone},
+		  mem_email = #{mem_email}
+		WHERE mem_num = #{mem_num}		  	   
+	</update>
+	
+	<select id="memberCount" parameterType="MemberVO" resultType="Integer">
+		select count(*)
+		from member m,member_detail b
+		where b.mem_name=#{mem_name} and b.mem_email=#{mem_email} and m.mem_num = b.mem_num	
+	</select>
+	
+	<select id="findIdMember" parameterType="MemberVO" resultType="MemberVO">
+		select m.mem_id, NVL(b.mem_token,0) mem_token
+		from member m,member_detail b
+		where b.mem_name=#{mem_name} and b.mem_email=#{mem_email} and m.mem_num = b.mem_num
+	</select> 
+	
+</mapper>
